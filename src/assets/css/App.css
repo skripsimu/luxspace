@@ -81,6 +81,7 @@ ul.breadcrumb li:last-child a {
 }
 
 /* slider */
+
 .slider {
   @apply flex my-4 flex-col;
 }
