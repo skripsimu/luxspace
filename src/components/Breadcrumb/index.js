@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 
-export default function Breadcrumb(List) {
+export default function Breadcrumb({ list }) {
     return (
         <section className="bg-gray-100 py-8 px-4">
             <div className="container mx-auto">
                 <ul className="breadcrumb">
                     {
-                        List?.map?.((item, index) => {
-                            const arias = index === List?.length ? { "aria-lable": "current-page" } : {}
+                        list?.map?.((item, index) => {
+                            const arias = index === list?.length ? { "aria-label": "current-page" } : {};
                             return (
                                 <li key={item.url}>
                                     <Link to={item.url} {...arias}>{item.name}</Link>
@@ -17,15 +17,6 @@ export default function Breadcrumb(List) {
                             );
                         })
                     }
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/">Office Room</Link>
-                    </li>
-                    <li>
-                        <Link to="/" aria-label="current-page">Details</Link>
-                    </li>
                 </ul>
             </div>
         </section>
@@ -33,5 +24,5 @@ export default function Breadcrumb(List) {
 }
 
 Breadcrumb.propTypes = {
-    list: PropTypes.array.isRequired,
+    list: propTypes.array.isRequired,
 }
