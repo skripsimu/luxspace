@@ -26,9 +26,9 @@ export default function Hero() {
         <div className="relative hero-image">
           <div className="overlay inset-0 bg-black opacity-10 z-10"></div>
           <div className="overlay right-0 bottom-0 md:inset-0">
-            <button
+          <button
               className="video hero-cta focus:outline-none z-30 modal-trigger"
-              data-content='<div class="w-screen pb-56 md:w-88 md:pb-56 relative z-50">
+              data-content='<div class="w-screen pb-72 md:w-96 md:pb-56 relative z-50">
               <div class="absolute w-full h-full">
                 <iframe
                   width="100%"
