@@ -1,6 +1,39 @@
-import React from 'react';
+import fetchData from 'helpers/fetch';
+import useAsync from 'helpers/hooks/useAsync';
+import React, { useEffect } from 'react';
 
 export default function BrowseRoom() {
+  const { data, status, error, run } = useAsync({ data: { username: "" } });
+  useEffect(() => {
+    run(
+      fetchData({
+        url: "/api/categories/?page=1&limit=4"
+      })
+    );
+  }, [run]);
+
+  console.log(data, status, error);
+
+  const ratioClassNames = {
+    wrapper: {
+      default: {
+        "1/9": "col-span-9 row-span-1"
+      },
+      md: {
+        "1/4": "md:col-span-4 md:row-span-1",
+        "2/2": "md:col-span-2 md:row-span-2",
+        "2/3": "md:col-span-3 md:row-span-2",
+      }
+    },
+    meta: {
+      "1/9": "left-0 top-0 flex justify-center flex-col pl-48 md:pl-72",
+      "1/4": "left-0 top-0 flex justify-center flex-col pl-48 md:pl-72",
+      "2/2": "inset-0 md:bottom-auto top-0 flex justify-center md:items-center flex-col pl-48 md:pl-0 md:pt-12",
+      "2/3": "inset-0 md:bottom-auto top-0 flex justify-center md:items-center flex-col pl-48 md:pl-0 md:pt-12",
+    },
+  }
+
+
   return (
     <section className="flex bg-gray-100 py-16 px-4" id="browse-the-room">
       <div className="container mx-auto">
@@ -12,7 +45,7 @@ export default function BrowseRoom() {
         <div className="grid grid-rows-2 grid-cols-9 gap-4">
           <div
             className="relative col-span-9 row-span-1 md:col-span-4 card"
-            style={{height: 180}}
+            style={{ height: 180 }}
           >
             <div className="card-shadow rounded-xl">
               <img
@@ -22,7 +55,7 @@ export default function BrowseRoom() {
               />
             </div>
             <div
-              className="overlay left-0 top-0 bottom-0 flex justify-center flex-col pl-48 md:pl-72"
+              className="overlay left-0 top-0 bottom-0 flex justify-center flex-col pl-48 md:pl-82"
             >
               <h5 className="text-lg font-semibold">Living Room</h5>
               <span className="">18.309 items</span>
@@ -77,7 +110,7 @@ export default function BrowseRoom() {
               />
             </div>
             <div
-              className="overlay left-0 top-0 bottom-0 flex justify-center flex-col pl-48 md:pl-72"
+              className="overlay left-0 top-0 bottom-0 flex justify-center flex-col pl-48 md:pl-44"
             >
               <h5 className="text-lg font-semibold">Children Room</h5>
               <span className="">837 items</span>
